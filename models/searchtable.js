@@ -3,6 +3,9 @@ module.exports = function (sequelize, DataTypes) {
         title: {
             type: DataTypes.STRING,
         },
+        date: {
+            type: DataTypes.STRING
+        },
         poster: {
             type: DataTypes.STRING,
         },

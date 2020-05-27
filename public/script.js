@@ -1,22 +1,34 @@
 $(document).ready(function () {
-    for (let i = 1; i <= 7; i++){
+    for (let i = 0; i < 7; i++){
         var title = $("<h5>").text(moment().add(i, 'days').format("MMM Do YY"));
         var button = $("<a>").attr("href", "#").addClass("index-submit btn btn-primary").text("Schedule a movie!");
         $(title).addClass("card-title");
         $(button).attr("data-date", moment().add(i, 'days').format("MMM Do YY"));
         $("#day-" + i).append(title, button);
         $.get("/api/movieclubs", function (results){
-            console.log(moment().add(i, 'days').format("YYYY-MM-DDT00:00:00.000Z"))
-            if(results[0].date === moment().add(i, 'days').format("YYYY-MM-DDT00:00:00.000Z")){
-                console.log(results[0].eventTitle);
-            }
-            console.log(results)
+            console.log(results);
         });
     }
     $(".index-submit").on("click", function (event){
         event.preventDefault();
         var movieDate = $(this).attr("data-date");
-        $(".hide").removeClass("hide");
+        console.log(movieDate)
+        $(".hide").removeClass("hide");    
+        $("#search-btn").on("click", function (event) {
+            event.preventDefault();
+            var newSearch = {
+                title: $("#search").val().trim()
+            };
+            $.ajax({
+                method: "GET",
+                url: "http://www.omdbapi.com/?t=" + newSearch.title + "&apikey=5868d549",
+            }).then(function (data) {
+                $.post("/api/add", {title: data.Title, date: movieDate, poster: data.Poster, plot: data.Plot})
+                .then(function(){
+                    window.location.replace("add");
+                });
+            });
+        });
     });
 
     $("#add-submit").on("click", function (event) {
@@ -36,22 +48,7 @@ $(document).ready(function () {
         event.preventDefault();
         window.location.replace("events");
     });
-    
-    $("#search-btn").on("click", function (event) {
-        event.preventDefault();
-        var newSearch = {
-            title: $("#search").val().trim()
-        };
-        $.ajax({
-            method: "GET",
-            url: "http://www.omdbapi.com/?t=" + newSearch.title + "&apikey=5868d549",
-        }).then(function (data) {
-            $.post("/api/add", {title: data.Title, poster: data.Poster, plot: data.Plot})
-            .then(function(){
-                window.location.replace("add");
-            });
-        });
-    });
+
 
     $("#add-cancel").on("click", function (event) {
         event.preventDefault();

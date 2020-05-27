@@ -22,7 +22,8 @@
         <div class="card text-center">
             <img id="add-card-img" src="{{this.poster}}" class="card-img-top" alt="...">
             <div id="add-card-body" class="card-body">
-                <h5 id="add-card-title" data-title="{{this.title}}" class="card-title">{{this.title}}</h5>
+                <h3 id="add-card-title" data-title="{{this.title}}" class="card-title">{{this.title}}</h3>
+                <h5 id="add-card-date" data-date="{{this.date}}" class="card-title">{{this.date}}</h5>
                 <p id="add-card-text" class="card-text">{{this.plot}}</p>
             </div>
         </div>
@@ -31,10 +32,6 @@
         <form method="POST" role="form">
             <label for="eventTitle">Enter the name of your movie club!</label>
             <input type="text" class="form-control" id="eventTitle" placeholder="Enter the name of your movie club!">
-            {{!-- <label for="movieTitle">Enter the name of your movie club!</label>
-            <input type="text" class="form-control" id="movieTitle" placeholder="Enter the name of your movie!"> --}}
-            <label for="eventDate" aria-placeholder="Enter date for your event">Enter the date for your event</label>
-            <input type="date" class="form-control" id="eventDate">
             <label for="eventTime" aria-placeholder="Enter date for your event">Enter the time for your event</label>
             <input type="time" class="form-control" id="eventTime">
             <label for="eventSubmit">When all of the information is correct, hit submit!</label>

@@ -21,6 +21,7 @@ module.exports = function(app) {
         }).then(function(results){ 
             hbsObject = {
             title: results[0].dataValues.title,
+            date: results[0].dataValues.date,
             poster: results[0].dataValues.poster,
             plot: results[0].dataValues.plot
         }
