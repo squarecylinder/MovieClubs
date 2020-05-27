@@ -5,6 +5,13 @@ $(document).ready(function () {
         $(title).addClass("card-title");
         $(button).attr("data-date", moment().add(i, 'days').format("MMM Do YY"));
         $("#day-" + i).append(title, button);
+        $.get("/api/movieclubs", function (results){
+            console.log(moment().add(i, 'days').format("YYYY-MM-DDT00:00:00.000Z"))
+            if(results[0].date === moment().add(i, 'days').format("YYYY-MM-DDT00:00:00.000Z")){
+                console.log(results[0].eventTitle);
+            }
+            console.log(results)
+        });
     }
     $(".index-submit").on("click", function (event){
         event.preventDefault();

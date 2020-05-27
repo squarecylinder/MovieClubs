@@ -2,9 +2,8 @@
 var db = require("../models");
 module.exports = function(app) {
     // GET route for getting all of clubs
-    app.get("/api/clubs/", function(req, res) {
-      db.MovieClubs.findAll({})
-        .then(function(dbClubs) {
+    app.get("/api/movieclubs/", function(req, res) {
+      db.MovieClubs.findAll({}).then(function(dbClubs) {
           res.json(dbClubs);
         });
     });
