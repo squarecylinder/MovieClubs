@@ -1,4 +1,35 @@
 $(document).ready(function () {
+    for (let i = 1; i <= 7; i++){
+        var title = $("<h5>").text(moment().add(i, 'days').format("MMM Do YY"));
+        var button = $("<a>").attr("href", "#").addClass("index-submit btn btn-primary").text("Schedule a movie!");
+        $(title).addClass("card-title");
+        $(button).attr("data-date", moment().add(i, 'days').format("MMM Do YY"));
+        $("#day-" + i).append(title, button);
+    }
+    $(".index-submit").on("click", function (event){
+        event.preventDefault();
+        var movieDate = $(this).attr("data-date");
+        $(".hide").removeClass("hide");
+    });
+
+    $("#add-submit").on("click", function (event) {
+        var movieClub = {
+            eventTitle: $("#eventTitle").val().trim(),
+            date: $("#eventDate").val(),
+            time: $("#eventTime").val(),
+            movieTitle: $("#add-card-title").attr("data-title")
+        };
+        event.preventDefault();
+        $.post("/api/movieclubs", movieClub)
+        .then(function(){
+            window.location.replace('/');
+        });
+    });
+    $("#events-btn").on("click", function (event) {
+        event.preventDefault();
+        window.location.replace("events");
+    });
+    
     $("#search-btn").on("click", function (event) {
         event.preventDefault();
         var newSearch = {
@@ -19,33 +50,4 @@ $(document).ready(function () {
         event.preventDefault();
         window.location.href = "/";
     });
-
-    $("#add-submit").on("click", function (event) {
-        var movieClub = {
-            eventTitle: $("#eventTitle").val().trim(),
-            date: $("#eventDate").val(),
-            time: $("#eventTime").val(),
-            movieTitle: $("#add-card-title").val().trim()
-        };
-        event.preventDefault();
-        $.post("/api/movieclubs", movieClub)
-        .then(function(){
-            window.location.replace('/');
-        });
-
-    });
-    $("#events-btn").on("click", function (event) {
-        event.preventDefault();
-        window.location.replace("events");
-    });
-    for (let i = 1; i <= 7; i++){
-        var title = $("<h5>").text(moment().add(i, 'days').format("MMM Do YY"));
-        $(title).attr("data-date", moment().add(i, 'days').format("MMM Do YY"));
-        $("#day-" + i).append(title);
-    }
-    $(".index-submit").on("click", function (event){
-        event.preventDefault();
-        console.log($(this).attr("data-date"));
-        $(".hide").removeClass("hide");
     })
-})
