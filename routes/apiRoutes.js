@@ -8,6 +8,12 @@ module.exports = function(app) {
           res.json(dbClubs);
         });
     });
+    // adding to clubs
+    app.post("/api/movieclubs", function(req, res){
+        db.MovieClubs.create(req.body).then(function(dbClubs){
+            res.json(dbClubs);
+        });
+    });
 
     app.post("/api/add", function(req, res){
         db.Search.create(req.body).then(function(dbAdd){

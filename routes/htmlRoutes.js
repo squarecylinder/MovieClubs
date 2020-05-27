@@ -2,7 +2,10 @@ var db = require("../models");
 module.exports = function(app) {
     // Each of the below routes just handles the HTML page that the user gets sent to.
     // index route loads view.html
+    var currentDay = new Date();
+
     app.get("/", function(req, res) {
+        
         res.render("index");
     });
 
@@ -13,7 +16,8 @@ module.exports = function(app) {
     
     app.get("/add", function(req, res) {
         db.Search.findAll({
-            where: {id: 1}
+            limit: 1,
+            order: [ ['createdAt', 'DESC'] ]
         }).then(function(results){ 
             hbsObject = {
             title: results[0].dataValues.title,

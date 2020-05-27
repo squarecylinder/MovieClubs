@@ -1,13 +1,91 @@
+<!--INDEX NAVBAR-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Movie Clubs</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events">Events</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div class="jumbotron jumbotron-fluid">
   <div class="container text-center">
     <h1 class="display-4">Movie Clubs</h1>
     <p class="lead">Its like a drive-in movie theater, but on your couch!</p>
   </div>
 </div>
-<form method="GET" role="form">
-  <div class="form-group">
-    <label for="search">Search a movie or tv show!</label>
-    <input type="text" class="form-control" id="search">
+<div>
+  <div class="row center">
+    <div class="col-4">
+      <div class="card text-center">
+        <div id="index-card-body" class="card-body">
+          <h5 id="day-1" class="card-title"></h5>
+          <a href="#" class="index-submit btn btn-primary">Schedule a movie!</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card text-center">
+        <div id="index-card-body" class="card-body">
+          <h5 id="day-2" class="card-title"></h5>
+          <a href="#" class="index-submit btn btn-primary">Schedule a movie!</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card text-center">
+        <div id="index-card-body" class="card-body">
+          <h5 id="day-3" class="card-title"></h5>
+          <a href="#" class="index-submit btn btn-primary">Schedule a movie!</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card text-center">
+        <div id="index-card-body" class="card-body">
+          <h5 id="day-4" class="card-title"></h5>
+          <a href="#" class="index-submit btn btn-primary">Schedule a movie!</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card text-center">
+        <div id="index-card-body" class="card-body">
+          <h5 id="day-5" class="card-title"></h5>
+          <a href="#" class="index-submit btn btn-primary">Schedule a movie!</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card text-center">
+        <div id="index-card-body" class="card-body">
+          <h5 id="day-6" class="card-title"></h5>
+          <a href="#" class="index-submit btn btn-primary">Schedule a movie!</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card text-center">
+        <div id="index-card-body" class="card-body">
+          <h5 id="day-7" class="card-title"></h5>
+          <a href="#" class="index-submit btn btn-primary">Schedule a movie!</a>
+        </div>
+      </div>
+    </div>
   </div>
-  <button id="search-btn" type="submit" class="btn btn-primary">Submit</button>
-</form>
+  <form class="hide" method="GET" role="form">
+    <div class="form-group">
+      <label for="search">Search a movie or tv show!</label>
+      <input type="text" class="form-control" id="search">
+    </div>
+    <button id="search-btn" type="submit" class="btn btn-info">Search</button>
+  </form>
+</div>

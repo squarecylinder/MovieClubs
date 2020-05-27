@@ -1,3 +1,22 @@
+<!--ADD NAVBAR-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Movie Clubs</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/events">Events</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 <div class="row center">
     <div class="col-2">
         <div class="card text-center">
@@ -5,9 +24,22 @@
             <div id="add-card-body" class="card-body">
                 <h5 id="add-card-title" class="card-title">{{this.title}}</h5>
                 <p id="add-card-text" class="card-text">{{this.plot}}</p>
-                <a id="add-submit" href="#" class="btn btn-primary">Go somewhere</a>
-                <a id="add-cancel" href="#" class="btn btn-danger">Cancel</a>
             </div>
         </div>
+    </div>
+    <div class="col-6">
+        <form method="POST" role="form">
+            <label for="eventTitle">Enter the name of your movie club!</label>
+            <input type="text" class="form-control" id="eventTitle" placeholder="Enter the name of your movie club!">
+            {{!-- <label for="movieTitle">Enter the name of your movie club!</label>
+            <input type="text" class="form-control" id="movieTitle" placeholder="Enter the name of your movie!"> --}}
+            <label for="eventDate" aria-placeholder="Enter date for your event">Enter the date for your event</label>
+            <input type="date" class="form-control" id="eventDate">
+            <label for="eventTime" aria-placeholder="Enter date for your event">Enter the date for your event</label>
+            <input type="time" class="form-control" id="eventTime">
+            <label for="eventSubmit">When all of the information is correct, hit submit!</label>
+        </form>
+        <a id="add-submit" href="#" class="btn btn-primary">Submit</a>
+        <a id="add-cancel" href="#" class="btn btn-danger">Cancel</a>
     </div>
 </div>
