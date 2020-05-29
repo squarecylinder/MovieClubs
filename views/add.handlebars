@@ -18,6 +18,7 @@
 </nav>
 
 <div class="row center">
+    {{!-- Shows movie information so the user knows if this is the movie they want to schedule --}}
     <div class="col-2">
         <div class="card text-center">
             <img id="add-card-img" src="{{this.poster}}" class="card-img-top" alt="...">
@@ -30,12 +31,15 @@
     </div>
     <div class="col-6">
         <form method="POST" role="form">
+            {{!-- Asks the user to enter in the name for their club --}}
             <label for="eventTitle">Enter the name of your movie club!</label>
             <input type="text" class="form-control" id="eventTitle" placeholder="Enter the name of your movie club!">
+            {{!-- Lets the user select a time the club will take place --}}
             <label for="eventTime" aria-placeholder="Enter date for your event">Enter the time for your event</label>
             <input type="time" class="form-control" id="eventTime">
             <label for="eventSubmit">When all of the information is correct, hit submit!</label>
         </form>
+        {{!-- A sumbit and cancel button --}}
         <a id="add-submit" href="#" class="btn btn-primary">Submit</a>
         <a id="add-cancel" href="#" class="btn btn-danger">Cancel</a>
     </div>
