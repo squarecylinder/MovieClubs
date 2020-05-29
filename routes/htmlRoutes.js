@@ -30,4 +30,14 @@ module.exports = function(app) {
         }
         res.render("add", hbsObject)})
     });
+    
+    app.get("/rsvp", function (req,res) {
+        db.Guests.findAll({
+        }).then(function (results) {
+            hbsObject = {
+                name: results
+            }
+        })
+        res.render("rsvp", hbsObject);
+    })
 }

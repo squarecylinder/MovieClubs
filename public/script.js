@@ -12,49 +12,56 @@ $(document).ready(function () {
             switch (results[j].date){
                 case moment().add(0, 'days').format("MMM Do YY"):
                     var clubTitle = $("<p>");
-                    var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    var body = $("<a>").attr("href", "rsvp").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    $(body).attr("data-id", j + 1);
                     $("#day-0").append(clubTitle.append(body));
                     break;
             }
             switch (results[j].date){
                 case moment().add(1, 'days').format("MMM Do YY"):
                     var clubTitle = $("<p>");
-                    var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    var body = $("<a>").attr("href", "rsvp").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    $(body).attr("data-id", j + 1);
                     $("#day-1").append(clubTitle.append(body));
                     break;
             }
             switch (results[j].date){
                 case moment().add(2, 'days').format("MMM Do YY"):
                     var clubTitle = $("<p>");
-                    var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    var body = $("<a>").attr("href", "rsvp").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    $(body).attr("data-id", j + 1);
                     $("#day-2").append(clubTitle.append(body));
                     break;
             }
             switch (results[j].date){
                 case moment().add(3, 'days').format("MMM Do YY"):
                     var clubTitle = $("<p>");
-                    var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    var body = $("<a>").attr("href", "rsvp").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    $(body).attr("data-id", j + 1);
                     $("#day-3").append(clubTitle.append(body));
                     break;
             }
             switch (results[j].date){
                 case moment().add(4, 'days').format("MMM Do YY"):
                     var clubTitle = $("<p>");
-                    var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    var body = $("<a>").attr("href", "rsvp").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    $(body).attr("data-id", j + 1);
                     $("#day-4").append(clubTitle.append(body));
                     break;
             }
             switch (results[j].date){
                 case moment().add(5, 'days').format("MMM Do YY"):
                     var clubTitle = $("<p>");
-                    var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    var body = $("<a>").attr("href", "rsvp").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    $(body).attr("data-id", j + 1);
                     $("#day-5").append(clubTitle.append(body));
                     break;
             }
             switch (results[j].date){
                 case moment().add(6, 'days').format("MMM Do YY"):
                     var clubTitle = $("<p>");
-                    var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    var body = $("<a>").attr("href", "rsvp").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
+                    $(body).attr("data-id", j + 1);
                     $("#day-6").append(clubTitle.append(body));
                     break;
             }
@@ -99,12 +106,16 @@ $(document).ready(function () {
             });
     });
 
-    $("#events-btn").on("click", function (event) {
-        $.get("/api/movieclubs").then(function(){
-            // window.location.href = "/events"
+    $(".index-clubs").on("click", function(event) {
+        console.log("pressing the index-club button");
+        event.preventDefault();
+        var guestList = {
+            MovieClubId: $(this).attr("data-id")
+        }
+        $.post("/api/rsvp", guestList).then(function(){
+            window.location.href = "/rsvp";
         })
-    });
-
+    })
 
     $("#add-cancel").on("click", function (event) {
         event.preventDefault();

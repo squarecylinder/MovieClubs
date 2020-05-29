@@ -13,6 +13,7 @@ module.exports = function(app) {
             res.json(dbClubs);
         });
     });
+    // adding the search
     app.post("/api/add", function(req, res){
         db.Search.create(req.body).then(function(dbAdd){
             res.json(dbAdd);
@@ -23,4 +24,15 @@ module.exports = function(app) {
             res.json(dbSearch);
         })
     })
+    // adding the rsvps
+    app.post("/api/rsvp", function(req, res){
+        db.Guests.create(req.body).then(function(dbGuests){
+            res.json(dbGuests);
+        });
+    });
+    app.get("/api/rsvp", function(req, res) {
+        db.Guests.findAll({}).then(function(req, res){
+            res.json(dbGuests)
+        });
+    });
 }

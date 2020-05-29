@@ -1,6 +1,25 @@
+* {
+    font-family: 'Chelsea Market', cursive;
+}
 .hide {
     visibility: hidden;
 }
 .show {
     visibility: visible;
+}
+.card {
+    margin: 10px;
+    border-color: black;
+    background-color: #343a40;
+    color: white;
+}
+body {
+    background-image: url("https://media3.s-nbcnews.com/i/newscms/2020_17/1560978/drive-in-theatre-today-main-200420_ffeb44fcfab328bcb72289657c7d1119.jpg");
+}
+html,body
+{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
 }
