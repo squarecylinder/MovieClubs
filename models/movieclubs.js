@@ -10,7 +10,8 @@ module.exports = function(sequelize, DataTypes) {
         },
         time: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            defaultValue: 21
         },
         movieTitle: {
             type: DataTypes.STRING,

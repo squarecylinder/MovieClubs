@@ -13,7 +13,6 @@ module.exports = function(app) {
             res.json(dbClubs);
         });
     });
-
     app.post("/api/add", function(req, res){
         db.Search.create(req.body).then(function(dbAdd){
             res.json(dbAdd);

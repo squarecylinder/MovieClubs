@@ -7,9 +7,7 @@ $(document).ready(function () {
         $("#day-" + i).append(title, button);
     }
     $.get("/api/movieclubs", function (results) {
-        console.log(results);
     }).then(function (results) {
-        console.log(results.length);
         for(let j = 0; j < results.length; j++){
             switch (results[j].date){
                 case moment().add(0, 'days').format("MMM Do YY"):
@@ -65,7 +63,6 @@ $(document).ready(function () {
     $(".index-submit").on("click", function (event) {
         event.preventDefault();
         var movieDate = $(this).attr("data-date");
-        console.log(movieDate)
         $(".hide").removeClass("hide");
         $("#search-btn").on("click", function (event) {
             event.preventDefault();
@@ -91,15 +88,21 @@ $(document).ready(function () {
             time: $("#eventTime").val(),
             movieTitle: $("#add-card-title").attr("data-title")
         };
+        if (movieClub.time === ''){
+            alert("Please enter a valid time");
+            return;
+        }
         event.preventDefault();
         $.post("/api/movieclubs", movieClub)
             .then(function () {
                 window.location.replace('/');
             });
     });
+
     $("#events-btn").on("click", function (event) {
-        event.preventDefault();
-        window.location.replace("events");
+        $.get("/api/movieclubs").then(function(){
+            // window.location.href = "/events"
+        })
     });
 
 
@@ -107,4 +110,7 @@ $(document).ready(function () {
         event.preventDefault();
         window.location.href = "/";
     });
-})
+
+});
+
+
