@@ -19,20 +19,26 @@ module.exports = function(app) {
             res.json(dbAdd);
         })
     });
+    // Grabbing everythin from the Search database
     app.get("/api/add", function(req, res) {
         db.Search.findAll({}).then(function(dbSearch){
             res.json(dbSearch);
         })
     })
-    // adding the rsvps
+    // Adding guests name to the Guests database
     app.post("/api/rsvp", function(req, res){
         db.Guests.create(req.body).then(function(dbGuests){
             res.json(dbGuests);
         });
     });
-    app.get("/api/rsvp", function(req, res) {
-        db.Guests.findAll({}).then(function(req, res){
-            res.json(dbGuests)
+    // Should only show the specific movie the user is requesting to RSVP at
+    app.get("/api/rsvp/:id", function(req, res) {
+        db.MovieClubs.findAll({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbClubs){
+            res.json(dbClubs)
         });
     });
 }

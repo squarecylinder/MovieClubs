@@ -7,6 +7,7 @@ module.exports = function(app) {
         res.render("index");
     });
 
+    // Displays every movieclub that is currently active on the events page
     app.get("/events", function(req, res){
         db.MovieClubs.findAll({})
         .then(function (results){
@@ -16,7 +17,7 @@ module.exports = function(app) {
         });
         res.render("events", hbsObject);
     });
-    
+    // Displays the most current movie that is being looked up to add a club
     app.get("/add", function(req, res) {
         db.Search.findAll({
             limit: 1,
@@ -30,9 +31,9 @@ module.exports = function(app) {
         }
         res.render("add", hbsObject)})
     });
-    
+    // Allows a user to RSVP to an event and put their name in that clubs database for guests.
     app.get("/rsvp", function (req,res) {
-        db.Guests.findAll({
+        db.MovieClubs.findAll({
         }).then(function (results) {
             hbsObject = {
                 name: results
