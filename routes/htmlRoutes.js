@@ -42,7 +42,8 @@ module.exports = function(app) {
         db.MovieClubs.findAll({
             where: {
                 id: req.params.id
-            }
+            },
+            include: [db.Guests]
         }).then(function (results) {
             console.log(results);
             hbsObject = {
@@ -50,8 +51,10 @@ module.exports = function(app) {
             title: results[0].dataValues.movieTitle,
             date: results[0].dataValues.date,
             poster: results[0].dataValues.poster,
-            plot: results[0].dataValues.plot
+            plot: results[0].dataValues.plot,
+            guest: results[0].dataValues.Guests
             }
+            console.log(hbsObject.guest)
         }).then( function() {
             res.render("rsvp", hbsObject)
         });

@@ -44,4 +44,13 @@ module.exports = function(app) {
             res.json(dbClubs)
         });
     });
+    app.delete("/api/guest/:id", function(req, res) {
+        db.Guests.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbGuests) {
+            res.json(dbGuests)
+        });
+    });
 }

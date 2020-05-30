@@ -168,7 +168,7 @@ $(document).ready(function () {
             return;
         }
         $.post("/api/rsvp", Guests).then(function () {
-            window.location.replace('/');
+            window.location.reload();
         });
     })
 
@@ -179,6 +179,15 @@ $(document).ready(function () {
             window.location.replace("/rsvp/" + MovieClubId);
         })
     })
+    $(".guest-delete").on("click", function(event) {
+        event.preventDefault();
+        var guestID = $(this).attr("id")
+        $.ajax({
+            url: "/api/guest/" + guestID,
+            method: "DELETE"
+        }).then(function() {
+            window.location.reload();
+        })
+    })
 })
-
 
