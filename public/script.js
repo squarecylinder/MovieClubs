@@ -25,7 +25,7 @@ $(document).ready(function () {
                 // Checks to see if the date from our result matches the first day or day 0
                 case moment().add(0, 'days').format("MMM Do YY"):
                     // Creating the title of the card
-                    var clubTitle = $("<p>");
+                    var clubTitle = $("<h5>");
                     // Creating our "button" with the text of the club title
                     var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
                     // Saves the data-id so that it will be unique to that club and match our database id scheme but on the front end
@@ -35,42 +35,42 @@ $(document).ready(function () {
                     break;
                     // Checks to see if the date from our result matches the second day or day 1
                 case moment().add(1, 'days').format("MMM Do YY"):
-                    var clubTitle = $("<p>");
+                    var clubTitle = $("<h5>");
                     var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
                     $(body).attr("data-id", j + 1);
                     $("#day-1").append(clubTitle.append(body));
                     break;
                     // Checks to see if the date from our result matches the third day or day 2
                 case moment().add(2, 'days').format("MMM Do YY"):
-                    var clubTitle = $("<p>");
+                    var clubTitle = $("<h5>");
                     var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
                     $(body).attr("data-id", j + 1);
                     $("#day-2").append(clubTitle.append(body));
                     break;
                     // Checks to see if the date from our result matches the fourth day or day 3
                 case moment().add(3, 'days').format("MMM Do YY"):
-                    var clubTitle = $("<p>");
+                    var clubTitle = $("<h5>");
                     var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
                     $(body).attr("data-id", j + 1);
                     $("#day-3").append(clubTitle.append(body));
                     break;
                     // Checks to see if the date from our result matches the fifth day or day 4
                 case moment().add(4, 'days').format("MMM Do YY"):
-                    var clubTitle = $("<p>");
+                    var clubTitle = $("<h5>");
                     var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
                     $(body).attr("data-id", j + 1);
                     $("#day-4").append(clubTitle.append(body));
                     break;
                     // Checks to see if the date from our result matches the sixth day or day 5
                 case moment().add(5, 'days').format("MMM Do YY"):
-                    var clubTitle = $("<p>");
+                    var clubTitle = $("<h5>");
                     var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
                     $(body).attr("data-id", j + 1);
                     $("#day-5").append(clubTitle.append(body));
                     break;
                     // Checks to see if the date from our result matches the seventh day or day 6
                 case moment().add(6, 'days').format("MMM Do YY"):
-                    var clubTitle = $("<p>");
+                    var clubTitle = $("<h5>");
                     var body = $("<a>").attr("href", "#").addClass("index-clubs btn btn-danger card-text").text(results[j].eventTitle)
                     $(body).attr("data-id", j + 1);
                     $("#day-6").append(clubTitle.append(body));

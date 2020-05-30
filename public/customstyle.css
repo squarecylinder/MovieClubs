@@ -23,3 +23,9 @@ html,body
     padding: 0px;
     overflow-x: hidden; 
 }
+.index-clubs {
+    line-height: 12px;
+}
+.index-submit {
+    margin-bottom: 10px;
+}

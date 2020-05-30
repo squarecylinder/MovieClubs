@@ -17,10 +17,14 @@
   </div>
 </nav>
 {{!-- Prints out all of the current events to specific cards --}}
-<div class="row col-10">
+<div class="container text-center">
+  <h1 class="display-4">Events</h1>
+  <p class="lead">Click on event that you want to RSVP to!</p>
+</div>
+<div class="row col-12 justify-content-md-center">
   {{#each clubs}}
-  <div class="col mb-4">
-    <div class="card h-100 text-white bg-dark mb-5">
+  <div class="col mb-2">
+    <div class="card h-100 text-white text-center bg-dark">
       <div class="event-card-body" id={{this.dataValues.id}}>
         <h5 class="card-title">{{this.dataValues.eventTitle}}</h5>
         <h6 class="card-title">Movie: {{this.dataValues.movieTitle}}</h6>
@@ -31,9 +35,3 @@
   </div>
   {{/each}}
 </div>
-{{!-- <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Dark card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div> --}}
