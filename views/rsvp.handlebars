@@ -19,20 +19,20 @@
 <div class="row center">
     {{!-- The poster and details of the movie --}}
     <div class="col-2">
-        <div class="card text-center">
-            <img id="add-card-img" src="{{this.poster}}" class="card-img-top" alt="...">
+        <div id="movie-club-id" data-id="{{this.id}}" class="card text-center">
+            <img id="add-card-img" data-poster="{{this.poster}}" src="{{this.poster}}" class="card-img-top" alt="...">
             <div id="add-card-body" class="card-body">
                 <h3 id="add-card-title" data-title="{{this.title}}" class="card-title">{{this.title}}</h3>
                 <h5 id="add-card-date" data-date="{{this.date}}" class="card-title">{{this.date}}</h5>
-                <p id="add-card-text" class="card-text">{{this.plot}}</p>
+                <p id="add-card-text" data-plot="{{this.plot}}" class="card-text">{{this.plot}}</p>
             </div>
         </div>
     </div>
     {{!-- Asking if the user would like to rsvp --}}
-    <form  method="POST" role="form">
+    <form method="POST" role="form">
     <div class="form-group">
       <label for="guest">Enter Guest Name</label>
-      <input type="text" class="form-control">
+      <input id="guest-input" type="text" class="form-control">
     </div>
     <button id="guest-btn" type="submit" class="btn btn-info">Submit</button>
   </form>

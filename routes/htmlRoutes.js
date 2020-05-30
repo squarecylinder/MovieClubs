@@ -4,7 +4,12 @@ module.exports = function(app) {
     // index route loads view.html
 
     app.get("/", function(req, res) {
-        res.render("index");
+        db.MovieClubs.findAll({})
+        .then(function (results){
+            hbsObject = {
+                clubs: results
+            }
+        }).then(res.render("index"));
     });
 
     // Displays every movieclub that is currently active on the events page
@@ -14,8 +19,9 @@ module.exports = function(app) {
             hbsObject = {
                 clubs: results
             }
-        });
-        res.render("events", hbsObject);
+        }).then(function() {
+        res.render("events", hbsObject)
+    });
     });
     // Displays the most current movie that is being looked up to add a club
     app.get("/add", function(req, res) {
@@ -32,13 +38,22 @@ module.exports = function(app) {
         res.render("add", hbsObject)})
     });
     // Allows a user to RSVP to an event and put their name in that clubs database for guests.
-    app.get("/rsvp", function (req,res) {
+    app.get("/rsvp/:id", function (req,res) {
         db.MovieClubs.findAll({
-        }).then(function (results) {
-            hbsObject = {
-                name: results
+            where: {
+                id: req.params.id
             }
-        })
-        res.render("rsvp", hbsObject);
+        }).then(function (results) {
+            console.log(results);
+            hbsObject = {
+            id: results[0].dataValues.id,
+            title: results[0].dataValues.movieTitle,
+            date: results[0].dataValues.date,
+            poster: results[0].dataValues.poster,
+            plot: results[0].dataValues.plot
+            }
+        }).then( function() {
+            res.render("rsvp", hbsObject)
+        });
     })
 }

@@ -82,16 +82,14 @@ $(document).ready(function () {
             console.log("pressing the index-club button");
             // Saves the id of the movie club to a variable when you click the button, we use this to check it against
             // another call so that the club we are going to RSVP on is the club we want
-            var guestList = {
-                MovieClubId: $(this).attr("data-id")
-            }
+            var MovieClubId = $(this).attr("data-id")
             console.log($(this).attr("data-id"));
             // POST to RSVP the object of MovieClubId and its id
             // This may need to be a GET?
-            $.post("/api/rsvp", guestList).then(function(){
+            $.get("/api/rsvp/" + MovieClubId).then(function(){
                 console.log("It posted to the api");
                 // This will then take you to the RSVP page so the user can rsvp
-                window.location.replace("rsvp");
+                window.location.replace("rsvp/" + MovieClubId);
             })
         })
     });
@@ -137,7 +135,9 @@ $(document).ready(function () {
             // Grabs the time from the user input
             time: $("#eventTime").val(),
             // Grabs the movie title from the cards data-title attr
-            movieTitle: $("#add-card-title").attr("data-title")
+            movieTitle: $("#add-card-title").attr("data-title"),
+            poster: $("#add-card-img").attr("data-poster"),
+            plot: $("#add-card-text").attr("data-plot")
         };
         // if the time is empty, prompts the user to enter a valid time!
         if (movieClub.time === ''){
@@ -157,6 +157,28 @@ $(document).ready(function () {
         window.location.replace('/');
     });
 
-});
+    $("#guest-btn").on("click", function (event) {
+        event.preventDefault();
+        var Guests = {
+        name: $("#guest-input").val().trim(),
+        MovieClubId: $("#movie-club-id").attr("data-id")
+            }
+        if(Guests.guestName === ''){
+            alert("Please enter a guests name!");
+            return;
+        }
+        $.post("/api/rsvp", Guests).then(function () {
+            window.location.replace('/');
+        });
+    })
+
+    $(".event-card-body").on("click", function(event) {
+        console.log($(this).attr("id"));
+        var MovieClubId = $(this).attr("id");
+        $.get("/api/rsvp/" + MovieClubId).then(function(){
+            window.location.replace("/rsvp/" + MovieClubId);
+        })
+    })
+})
 
 

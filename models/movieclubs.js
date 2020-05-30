@@ -17,6 +17,12 @@ module.exports = function(sequelize, DataTypes) {
         movieTitle: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        poster: {
+            type: DataTypes.STRING
+        },
+        plot: {
+            type: DataTypes.STRING
         }
     });
     // This allows us to tie one movie club to many guests
