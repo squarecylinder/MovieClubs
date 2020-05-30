@@ -111,7 +111,7 @@ $(document).ready(function () {
                 // The method is GET because we want data as a response
                 method: "GET",
                 // This is the URL + UserInput + apikey
-                url: "http://www.omdbapi.com/?t=" + newSearch + "&apikey=5868d549",
+                url: "https://www.omdbapi.com/?t=" + newSearch + "&apikey=5868d549",
                 // After the call we want to do something with the data.
             }).then(function (data) {
                 // We post this to the /api/add as an object because this object correlates to our Search Database
