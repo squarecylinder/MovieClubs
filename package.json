@@ -15,7 +15,7 @@
     "@fullcalendar/core": "^4.4.0",
     "@fullcalendar/daygrid": "^4.4.0",
     "express": "^4.16.3",
-    "express-handlebars": "^4.0.4",
+    "express-handlebars": "^5.3.1",
     "moment": "^2.26.0",
     "mysql2": "^1.6.4",
     "sequelize": "^4.41.2"
